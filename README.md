@@ -6,5 +6,5 @@ This project is a proof of concept of using VASCO 2 Factor Authentication Librar
 
 # Setup QRGenerator Backend
  1. Open project with IntelliJ IDEA
- 1. Create build configuration like image below <br> ![](screenshot/buildQR1.png) <br><br> ![](screenshot/buildQR2.png)
+ 1. Create build configuration like image below <br> ![](Screenshot/buildQR1.png) <br><br> ![](Screenshot/buildQR2.png)
  1. Run project 
