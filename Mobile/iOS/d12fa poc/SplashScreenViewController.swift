@@ -12,7 +12,7 @@ class SplashScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
 //        let view = UIView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
 
 //        let url = URL(string:"https://www.apple.com/v/home/dq/images/custom-heroes/product-red/hero_large.jpg")

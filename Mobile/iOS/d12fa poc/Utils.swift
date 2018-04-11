@@ -32,10 +32,10 @@ class Utils {
         defaults.set(newName, forKey: "name")
     }
     
-    static func saveSplashScreen(image:UIImage) {
+    static func saveSplashScreen(image:UIImage) -> Bool {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = paths[0]
-        let fileUrl = documentDirectory.appendingPathComponent("copy.jpg")
+        let fileUrl = documentDirectory.appendingPathComponent("splash.jpg")
         
         let filePath = fileUrl.path
         if (FileManager.default.fileExists(atPath: filePath)) {
@@ -43,20 +43,25 @@ class Utils {
         }
         
         //try? UIImagePNGRepresentation(image)?.write(to: fileUrl, options: .atomic)
-        try? UIImageJPEGRepresentation(image, 1.0)?.write(to: fileUrl, options: .atomic)
+        do {
+            try UIImageJPEGRepresentation(image, 1.0)?.write(to: fileUrl, options: .atomic)
+        }
+        catch {
+            print("Unexpected non-vending-machine-related error: \(error)")
+            return false
+        }
         
         let defaults = UserDefaults.standard
         defaults.set(filePath, forKey: "splashScreen")
+        
+        return true
     }
     
     static func getSplashScreen() -> UIImage? {
-        let defaults = UserDefaults.standard
-        
-        guard let filePath:String = defaults.string(forKey: "splashScreen") else {
-            return nil
-        }
-        
-        let fileUrl = URL(fileURLWithPath: filePath)
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = paths[0]
+        let fileUrl = documentDirectory.appendingPathComponent("splash.jpg")
+
         guard let data = try? Data(contentsOf: fileUrl) else {
             return nil
         }

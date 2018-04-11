@@ -79,14 +79,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csz-KW-tvn">
-                                <rect key="frame" x="20" y="228" width="138" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title Bar Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csz-KW-tvn">
+                                <rect key="frame" x="20" y="228" width="109" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8W-PT-fVV">
-                                <rect key="frame" x="20" y="284" width="80" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title Bar Font Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8W-PT-fVV">
+                                <rect key="frame" x="20" y="328" width="148" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -105,18 +106,28 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Splash Screen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eMS-iu-0EP">
-                                <rect key="frame" x="20" y="334" width="110" height="21"/>
+                                <rect key="frame" x="20" y="434" width="110" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rgx-Qw-t39">
-                                <rect key="frame" x="138" y="369" width="138" height="203"/>
+                                <rect key="frame" x="125" y="472" width="138" height="203"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uRw-lO-ue4" customClass="ColorPicker" customModule="d12fa_poc" customModuleProvider="target">
+                                <rect key="frame" x="20" y="257" width="374" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PKx-hY-ANH" customClass="ColorPicker" customModule="d12fa_poc" customModuleProvider="target">
+                                <rect key="frame" x="20" y="357" width="374" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lrb-fH-hWv">
-                                <rect key="frame" x="345" y="329" width="53" height="30"/>
+                                <rect key="frame" x="168" y="430" width="53" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Change"/>
                                 <connections>
@@ -126,11 +137,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="m8W-PT-fVV" firstAttribute="leading" secondItem="csz-KW-tvn" secondAttribute="leading" id="0oA-dK-iwl"/>
                             <constraint firstItem="9Be-Ev-l2d" firstAttribute="top" secondItem="WJK-2r-bNd" secondAttribute="bottom" constant="16" id="69D-wI-phm"/>
                             <constraint firstItem="WJK-2r-bNd" firstAttribute="top" secondItem="fwZ-9W-Vom" secondAttribute="top" constant="20" id="6aa-Hh-bWv"/>
                             <constraint firstItem="fwZ-9W-Vom" firstAttribute="trailing" secondItem="9Be-Ev-l2d" secondAttribute="trailing" constant="20" id="ABE-8p-YOh"/>
-                            <constraint firstItem="m8W-PT-fVV" firstAttribute="top" secondItem="csz-KW-tvn" secondAttribute="bottom" constant="35" id="eBX-Fs-3dQ"/>
                             <constraint firstItem="9Be-Ev-l2d" firstAttribute="leading" secondItem="fwZ-9W-Vom" secondAttribute="leading" constant="20" id="eJ7-1m-fG0"/>
                             <constraint firstItem="csz-KW-tvn" firstAttribute="top" secondItem="fwZ-9W-Vom" secondAttribute="top" constant="208" id="uUK-wd-ZUX"/>
                             <constraint firstItem="WJK-2r-bNd" firstAttribute="centerX" secondItem="fwZ-9W-Vom" secondAttribute="centerX" id="yG0-Nr-bIH"/>
@@ -208,10 +217,10 @@
             </objects>
             <point key="canvasLocation" x="-1791.304347826087" y="115.7608695652174"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar View Controller-->
         <scene sceneID="NRK-6j-Ee8">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="39r-iU-Gkg" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="39r-iU-Gkg" customClass="MainTabBarViewController" customModule="d12fa_poc" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="A4P-cg-Pvj">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

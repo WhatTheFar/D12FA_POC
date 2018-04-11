@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, UITextFieldDelegate {
+class SettingViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var nameTextField: UITextField!
     
@@ -40,38 +40,55 @@ class SettingViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func splashScreenChangeClick(_ sender: Any) {
-        // Create the AlertController
+        let button = sender as! UIButton
+        
         let actionSheetController = UIAlertController(title: "Please select", message: nil, preferredStyle: .actionSheet)
+        actionSheetController.popoverPresentationController?.sourceView = button
+        actionSheetController.popoverPresentationController?.sourceRect = button.bounds
         
-        let cancelAction = UIAlertAction(title: "From URL", style: .default) { action -> Void in
-            let alert = UIAlertController(title: "Enter image URL", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-            
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { (action: UIAlertAction) in
-                
-                if let alertTextField = alert.textFields?.first, alertTextField.text != nil {
-                    let urlString = alertTextField.text!
-                    
-                    let url = URL(string: urlString)
-                    //let url = URL(string:"https://www.apple.com/v/home/dq/images/custom-heroes/product-red/hero_large.jpg")
-                    if let data = try? Data(contentsOf: url!)
-                    {
-                        let image: UIImage = UIImage(data: data)!
-                        Utils.saveSplashScreen(image: image)
-                    }
-                }
-            }))
-            
-            alert.addTextField()
-            self.present(alert, animated: true, completion: nil)
-        }
-        actionSheetController.addAction(cancelAction)
-        
-        let takePictureAction = UIAlertAction(title: "From Gallery", style: .default) { action -> Void in
-            
+        let takePictureAction = UIAlertAction(title: "Take Camera", style: .default) { action -> Void in
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.allowsEditing = false
+            picker.sourceType = .camera
+            self.present(picker, animated: true, completion: nil)
         }
         actionSheetController.addAction(takePictureAction)
-        
+
+        let fromGalleryAction = UIAlertAction(title: "From Gallery", style: .default) { action -> Void in
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.allowsEditing = false
+            picker.sourceType = .photoLibrary
+            self.present(picker, animated: true, completion: nil)
+        }
+        actionSheetController.addAction(fromGalleryAction)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action -> Void in
+            actionSheetController.dismiss(animated: true, completion: nil)
+        }
+        actionSheetController.addAction(cancelAction)
+
         self.present(actionSheetController, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        var success = false
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            success = Utils.saveSplashScreen(image: image)
+        }
+        
+        if (!success) {
+            let alert = UIAlertController.init(title: "Save failed", message: "please try again", preferredStyle: .alert)
+            let actionOK = UIAlertAction.init(title: "OK", style: .default, handler: { action in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            alert.addAction(actionOK);
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     /*
