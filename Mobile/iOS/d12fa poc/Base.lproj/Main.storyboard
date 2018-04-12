@@ -150,6 +150,8 @@
                     <tabBarItem key="tabBarItem" title="Settings" id="t3I-7P-Dak"/>
                     <connections>
                         <outlet property="nameTextField" destination="9Be-Ev-l2d" id="ruc-f4-AwV"/>
+                        <outlet property="titleBarColorPicker" destination="uRw-lO-ue4" id="tPr-Qx-RDf"/>
+                        <outlet property="titleBarFontColorPicker" destination="PKx-hY-ANH" id="Ohh-4C-2Ag"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ekX-Sr-ZpM" userLabel="First Responder" sceneMemberID="firstResponder"/>

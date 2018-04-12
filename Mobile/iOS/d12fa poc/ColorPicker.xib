@@ -13,6 +13,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ColorPicker" customModule="d12fa_poc" customModuleProvider="target">
             <connections>
                 <outlet property="color1" destination="btb-qn-qAh" id="TtH-wv-fK6"/>
+                <outlet property="color2" destination="AFw-vZ-rhR" id="Vom-vk-gAw"/>
+                <outlet property="color3" destination="nb9-le-BaV" id="DDb-sQ-Rb2"/>
+                <outlet property="color4" destination="WVr-RY-KBn" id="v3Y-J0-aLN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

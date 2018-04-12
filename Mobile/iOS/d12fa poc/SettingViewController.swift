@@ -8,13 +8,17 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
-
+class SettingViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ColorPickerDelegate{
+    
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var titleBarFontColorPicker: ColorPicker!
+    @IBOutlet weak var titleBarColorPicker: ColorPicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        titleBarFontColorPicker.colorSelectedDelegate = self
+        titleBarColorPicker.colorSelectedDelegate = self
         nameTextField.delegate = self
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
@@ -22,6 +26,16 @@ class SettingViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     override func viewWillAppear(_ animated: Bool) {
         let name = Utils.getName()
         nameTextField.text = name
+        
+        let mainTabBarController = self.tabBarController as! MainTabBarViewController
+        
+        let titleBarColorHex = Utils.getTitleBarColor()
+        let titleBarColor = titleBarColorPicker.select(hex: titleBarColorHex)
+        mainTabBarController.setTitleBarColor(_color: titleBarColor)
+        
+        let titleBarFontColorHex = Utils.getTitleBarFontColor()
+        let titleBarFontColor = titleBarFontColorPicker.select(hex: titleBarFontColorHex)
+        mainTabBarController.setTitleBarFontColor(_color: titleBarFontColor)
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,6 +43,19 @@ class SettingViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         // Dispose of any resources that can be recreated.
     }
     
+    func colorSelected(_ sender:ColorPicker, color: UIColor) {
+        let mainTabBarController = self.tabBarController as! MainTabBarViewController
+
+        if (sender == titleBarColorPicker){
+            Utils.setTitleBarColor(newColor: color.hexString!)
+            mainTabBarController.setTitleBarColor(_color: color)
+        }
+        else {
+            Utils.setTitleBarFontColor(newColor: color.hexString!)
+            mainTabBarController.setTitleBarFontColor(_color: color)
+        }
+    }
+
     @objc func textFieldDidChange(_ textField: UITextField) {
         let newName = nameTextField.text
         Utils.setName(newName: newName!)

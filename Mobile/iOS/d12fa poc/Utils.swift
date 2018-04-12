@@ -31,6 +31,50 @@ class Utils {
         let defaults = UserDefaults.standard
         defaults.set(newName, forKey: "name")
     }
+
+    static func getTitleBarColor() -> String {
+        let defaults = UserDefaults.standard
+        var color:String? = defaults.string(forKey: "titleBarColor")
+        if (color == nil) {
+            color = UIColor.white.hexString
+            defaults.set(color, forKey: "titleBarColor")
+        }
+        
+        return color!;
+    }
+    
+    static func setTitleBarColor(newColor:String) {
+        let color = Utils.getTitleBarColor()
+        
+        guard color != newColor else {
+            return
+        }
+        
+        let defaults = UserDefaults.standard
+        defaults.set(newColor, forKey: "titleBarColor")
+    }
+
+    static func getTitleBarFontColor() -> String {
+        let defaults = UserDefaults.standard
+        var color:String? = defaults.string(forKey: "titleBarFontColor")
+        if (color == nil) {
+            color = UIColor.black.hexString
+            defaults.set(color, forKey: "titleBarFontColor")
+        }
+        
+        return color!;
+    }
+    
+    static func setTitleBarFontColor(newColor:String) {
+        let color = Utils.getTitleBarFontColor()
+        
+        guard color != newColor else {
+            return
+        }
+        
+        let defaults = UserDefaults.standard
+        defaults.set(newColor, forKey: "titleBarFontColor")
+    }
     
     static func saveSplashScreen(image:UIImage) -> Bool {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

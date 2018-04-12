@@ -14,10 +14,8 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         UIApplication.shared.statusBarStyle = .lightContent
-        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
-        if statusBar.responds(to: #selector(setter: UIView.backgroundColor)) {
-            statusBar.backgroundColor = UIColor.black
-        }
+        self.setTitleBarFontColor(_color: UIColor(hex: Utils.getTitleBarFontColor()))
+        self.setTitleBarColor(_color: UIColor(hex: Utils.getTitleBarColor()))
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +23,35 @@ class MainTabBarViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    func setTitleBarFontColor(_color: UIColor?) {
+        guard let color = _color else { return }
+        
+        guard let items = self.tabBar.items else { return }
+        
+        for item in items {
+            item.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: color], for: .normal)
+            item.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: color], for: .selected)
+        }
 
+        //set globally, restart app required
+        //UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: color], for: .normal)
+        //UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: color], for: .selected)
+    }
+    
+    func setTitleBarColor(_color: UIColor?) {
+        guard let color = _color else { return }
+        
+        self.tabBar.barTintColor = color;
+        
+        //set globally, restart app required
+        //UITabBar.appearance().barTintColor = color
+        
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        if statusBar.responds(to: #selector(setter: UIView.backgroundColor)) {
+            statusBar.backgroundColor = color
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
