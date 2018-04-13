@@ -21,6 +21,14 @@ extension String {
     }
 }
 
+extension UIImageView{
+    //When use, Just call MyImageView.asCircle()
+    func asCircle(){
+        self.layer.cornerRadius = self.frame.width / 2;
+        self.layer.masksToBounds = true
+    }
+}
+
 extension UIColor {
     convenience init(hex: String) {
         var alpha: UInt32 = 255

@@ -15,7 +15,6 @@
 		DDAA5D5620764C4600BC1D31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDAA5D5420764C4600BC1D31 /* LaunchScreen.storyboard */; };
 		DDAA5D6820764FC700BC1D31 /* QRCodeScannerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDAA5D6620764FC600BC1D31 /* QRCodeScannerSDK.framework */; };
 		DDAA5D6920764FC700BC1D31 /* libUtilitiesSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDAA5D6720764FC700BC1D31 /* libUtilitiesSDK.a */; };
-		DDCE709C207CD22F0086B8B0 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDCE709B207CD22F0086B8B0 /* SplashScreenViewController.swift */; };
 		DDF2DFA6207E18160089998C /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF2DFA5207E18160089998C /* MainTabBarViewController.swift */; };
 		DDF2DFA8207E1DC90089998C /* ColorPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF2DFA7207E1DC90089998C /* ColorPicker.xib */; };
 		DDF2DFAA207E1DF70089998C /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF2DFA9207E1DF70089998C /* ColorPicker.swift */; };
@@ -36,7 +35,6 @@
 		DDAA5D5720764C4600BC1D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDAA5D6620764FC600BC1D31 /* QRCodeScannerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QRCodeScannerSDK.framework; sourceTree = "<group>"; };
 		DDAA5D6720764FC700BC1D31 /* libUtilitiesSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUtilitiesSDK.a; sourceTree = "<group>"; };
-		DDCE709B207CD22F0086B8B0 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		DDF2DFA5207E18160089998C /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		DDF2DFA7207E1DC90089998C /* ColorPicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPicker.xib; sourceTree = "<group>"; };
 		DDF2DFA9207E1DF70089998C /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
@@ -58,6 +56,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD451DA92080928D004CAAC9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DDF2DFA7207E1DC90089998C /* ColorPicker.xib */,
+				DDF2DFA9207E1DF70089998C /* ColorPicker.swift */,
+				DD1144E0207FABC100FBEE81 /* Extensions.swift */,
+				DDFC1170207B0C2D00F2E43C /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		DDAA5D3F20764C4600BC1D31 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +88,7 @@
 		DDAA5D4A20764C4600BC1D31 /* d12fa poc */ = {
 			isa = PBXGroup;
 			children = (
+				DD451DA92080928D004CAAC9 /* Utils */,
 				DDAA5D4B20764C4600BC1D31 /* AppDelegate.swift */,
 				DDAA5D4D20764C4600BC1D31 /* ViewController.swift */,
 				DDAA5D4F20764C4600BC1D31 /* Main.storyboard */,
@@ -87,12 +97,7 @@
 				DDAA5D5720764C4600BC1D31 /* Info.plist */,
 				DDFC116C207B08D900F2E43C /* DashboardViewController.swift */,
 				DDFC116E207B08ED00F2E43C /* SettingViewController.swift */,
-				DDFC1170207B0C2D00F2E43C /* Utils.swift */,
-				DDCE709B207CD22F0086B8B0 /* SplashScreenViewController.swift */,
 				DDF2DFA5207E18160089998C /* MainTabBarViewController.swift */,
-				DDF2DFA7207E1DC90089998C /* ColorPicker.xib */,
-				DDF2DFA9207E1DF70089998C /* ColorPicker.swift */,
-				DD1144E0207FABC100FBEE81 /* Extensions.swift */,
 			);
 			path = "d12fa poc";
 			sourceTree = "<group>";
@@ -183,7 +188,6 @@
 				DD1144E1207FABC100FBEE81 /* Extensions.swift in Sources */,
 				DDF2DFAA207E1DF70089998C /* ColorPicker.swift in Sources */,
 				DDAA5D4E20764C4600BC1D31 /* ViewController.swift in Sources */,
-				DDCE709C207CD22F0086B8B0 /* SplashScreenViewController.swift in Sources */,
 				DDF2DFA6207E18160089998C /* MainTabBarViewController.swift in Sources */,
 				DDFC116D207B08D900F2E43C /* DashboardViewController.swift in Sources */,
 				DDAA5D4C20764C4600BC1D31 /* AppDelegate.swift in Sources */,

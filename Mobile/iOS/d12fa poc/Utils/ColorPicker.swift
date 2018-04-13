@@ -36,6 +36,14 @@ class ColorPicker: UIView {
         contentView = view
     }
     
+    func blackWhiteMode() {
+        color1.backgroundColor = UIColor.black
+        color2.backgroundColor = UIColor.white
+        color3.isHidden = true
+        color4.isHidden = true
+        removeSelection()
+    }
+    
     func loadViewFromNib() -> UIView? {
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: nibName, bundle: bundle)
