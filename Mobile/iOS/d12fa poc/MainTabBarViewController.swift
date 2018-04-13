@@ -61,16 +61,8 @@ class MainTabBarViewController: UITabBarController {
         
         guard let navigationController = viewController as? UINavigationController else { return nil }
         
-        var width = 15.0
-        var height = 15.0
-        
-        if UIScreen.main.scale == 2 {
-            width = 30.0
-            height = 30.0
-        } else {
-            width = 60.0
-            height = 60.0
-        }
+        let width = 30.0
+        let height = 30.0
         
         let scaleW = icon.size.width / CGFloat(width)
         let scaleH = icon.size.height / CGFloat(height)
