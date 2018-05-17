@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD1144E1207FABC100FBEE81 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD1144E0207FABC100FBEE81 /* Extensions.swift */; };
 		DDAA5D4C20764C4600BC1D31 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA5D4B20764C4600BC1D31 /* AppDelegate.swift */; };
 		DDAA5D4E20764C4600BC1D31 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAA5D4D20764C4600BC1D31 /* ViewController.swift */; };
 		DDAA5D5120764C4600BC1D31 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDAA5D4F20764C4600BC1D31 /* Main.storyboard */; };
@@ -14,9 +15,16 @@
 		DDAA5D5620764C4600BC1D31 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDAA5D5420764C4600BC1D31 /* LaunchScreen.storyboard */; };
 		DDAA5D6820764FC700BC1D31 /* QRCodeScannerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDAA5D6620764FC600BC1D31 /* QRCodeScannerSDK.framework */; };
 		DDAA5D6920764FC700BC1D31 /* libUtilitiesSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DDAA5D6720764FC700BC1D31 /* libUtilitiesSDK.a */; };
+		DDF2DFA6207E18160089998C /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF2DFA5207E18160089998C /* MainTabBarViewController.swift */; };
+		DDF2DFA8207E1DC90089998C /* ColorPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDF2DFA7207E1DC90089998C /* ColorPicker.xib */; };
+		DDF2DFAA207E1DF70089998C /* ColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF2DFA9207E1DF70089998C /* ColorPicker.swift */; };
+		DDFC116D207B08D900F2E43C /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC116C207B08D900F2E43C /* DashboardViewController.swift */; };
+		DDFC116F207B08ED00F2E43C /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC116E207B08ED00F2E43C /* SettingViewController.swift */; };
+		DDFC1171207B0C2D00F2E43C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDFC1170207B0C2D00F2E43C /* Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD1144E0207FABC100FBEE81 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DD5A7039207657230015CC9A /* d12fa-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "d12fa-Bridging-Header.h"; sourceTree = "<group>"; };
 		DDAA5D4820764C4600BC1D31 /* d12fa poc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "d12fa poc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDAA5D4B20764C4600BC1D31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -27,6 +35,12 @@
 		DDAA5D5720764C4600BC1D31 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDAA5D6620764FC600BC1D31 /* QRCodeScannerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QRCodeScannerSDK.framework; sourceTree = "<group>"; };
 		DDAA5D6720764FC700BC1D31 /* libUtilitiesSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUtilitiesSDK.a; sourceTree = "<group>"; };
+		DDF2DFA5207E18160089998C /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		DDF2DFA7207E1DC90089998C /* ColorPicker.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorPicker.xib; sourceTree = "<group>"; };
+		DDF2DFA9207E1DF70089998C /* ColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker.swift; sourceTree = "<group>"; };
+		DDFC116C207B08D900F2E43C /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		DDFC116E207B08ED00F2E43C /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		DDFC1170207B0C2D00F2E43C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +56,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DD451DA92080928D004CAAC9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DDF2DFA7207E1DC90089998C /* ColorPicker.xib */,
+				DDF2DFA9207E1DF70089998C /* ColorPicker.swift */,
+				DD1144E0207FABC100FBEE81 /* Extensions.swift */,
+				DDFC1170207B0C2D00F2E43C /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		DDAA5D3F20764C4600BC1D31 = {
 			isa = PBXGroup;
 			children = (
@@ -63,12 +88,16 @@
 		DDAA5D4A20764C4600BC1D31 /* d12fa poc */ = {
 			isa = PBXGroup;
 			children = (
+				DD451DA92080928D004CAAC9 /* Utils */,
 				DDAA5D4B20764C4600BC1D31 /* AppDelegate.swift */,
 				DDAA5D4D20764C4600BC1D31 /* ViewController.swift */,
 				DDAA5D4F20764C4600BC1D31 /* Main.storyboard */,
 				DDAA5D5220764C4600BC1D31 /* Assets.xcassets */,
 				DDAA5D5420764C4600BC1D31 /* LaunchScreen.storyboard */,
 				DDAA5D5720764C4600BC1D31 /* Info.plist */,
+				DDFC116C207B08D900F2E43C /* DashboardViewController.swift */,
+				DDFC116E207B08ED00F2E43C /* SettingViewController.swift */,
+				DDF2DFA5207E18160089998C /* MainTabBarViewController.swift */,
 			);
 			path = "d12fa poc";
 			sourceTree = "<group>";
@@ -142,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDAA5D5620764C4600BC1D31 /* LaunchScreen.storyboard in Resources */,
+				DDF2DFA8207E1DC90089998C /* ColorPicker.xib in Resources */,
 				DDAA5D5320764C4600BC1D31 /* Assets.xcassets in Resources */,
 				DDAA5D5120764C4600BC1D31 /* Main.storyboard in Resources */,
 			);
@@ -154,8 +184,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDFC1171207B0C2D00F2E43C /* Utils.swift in Sources */,
+				DD1144E1207FABC100FBEE81 /* Extensions.swift in Sources */,
+				DDF2DFAA207E1DF70089998C /* ColorPicker.swift in Sources */,
 				DDAA5D4E20764C4600BC1D31 /* ViewController.swift in Sources */,
+				DDF2DFA6207E18160089998C /* MainTabBarViewController.swift in Sources */,
+				DDFC116D207B08D900F2E43C /* DashboardViewController.swift in Sources */,
 				DDAA5D4C20764C4600BC1D31 /* AppDelegate.swift in Sources */,
+				DDFC116F207B08ED00F2E43C /* SettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
