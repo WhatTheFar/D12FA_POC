@@ -6,23 +6,22 @@ This project is a proof of concept of using VASCO 2 Factor Authentication Librar
 
 # Setup QRGenerator Backend
  1. Install Java JDK
- ```
- brew update
- brew cask install java8
- ```
-
+     ```
+     brew update
+     brew cask install java8
+     ```
  1. add JAVA_HOME to your environment file ~/.zprofile
- ```
- export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
- export PATH=${PATH}:$JAVA_HOME/bin
- ```
-
+     ```
+     export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+     export PATH=${PATH}:$JAVA_HOME/bin
+     ```
  1. install gradle
- ```
- brew install gradle
- ```
-
+     ```
+     brew install gradle
+     ```
  1. Open project with IntelliJ IDEA
  1. Create build configuration like image below <br> ![](Screenshot/buildQR1.png) <br><br> ![](Screenshot/buildQR2.png)
  1. Run project
+    * if IntelliJ ask for java home, open terminal and run command ```/usr/libexec/java_home -v 1.8```
+    * if IntelliJ ask for gradle home, enter ```/usr/local/opt/gradle/libexec```
  1. Go to url http://localhost:8080/ 
