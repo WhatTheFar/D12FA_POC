@@ -97,8 +97,10 @@ class DashboardViewController: UIViewController, UIImagePickerControllerDelegate
 
     func qrCodeScannerSDKController(_ controller: QRCodeScannerSDKViewController!, didScanResult result: String!, withCodeType codeType: Int32) {
         
-        scanResult.text = result
-        scanResult.isHidden = false
+        var txt = result
+        if let data = dataFromHexString(hexString: result), let str = String(data: data, encoding: String.Encoding.utf8) {
+            txt = str
+        }
         
 //        if (codeType == QRCodeScannerSDKConstants_QR_CODE) {
 //            scanResultType.text = "QRCode"
@@ -106,7 +108,17 @@ class DashboardViewController: UIViewController, UIImagePickerControllerDelegate
 //            scanResultType.text = "Color QR Code"
 //        }
         
-        controller.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true, completion: {
+            let alert = UIAlertController.init(title: nil, message:txt, preferredStyle: .alert);
+            
+            let actionOK = UIAlertAction.init(title: "OK", style: .default, handler:
+            { action in
+                alert.dismiss(animated: true, completion: nil);
+            });
+            
+            alert.addAction(actionOK);
+            self.present(alert, animated: true, completion: nil);
+        })
     }
     
     func qrCodeScannerSDKControllerDidCancel(_ controller: QRCodeScannerSDKViewController!) {
@@ -117,6 +129,36 @@ class DashboardViewController: UIViewController, UIImagePickerControllerDelegate
 //        scanResultType.text = "Exception"
         scanResult.text = String(format:"Error Code : %@", exception.errorCode)
         scanResult.isHidden = false
+    }
+    
+    func dataFromHexString(hexString: String) -> Data?
+    {
+        var hexString = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        hexString = hexString.replacingOccurrences(of: " ", with: "")
+        hexString = hexString.lowercased();
+        
+        var data = Data(capacity: hexString.count / 2)
+        
+        for char in hexString.unicodeScalars
+        {
+            let c = char.value;
+            
+            if !((c >= 97 && c <= 102) || (c >= 48 && c <= 57))
+            {
+                return nil
+            }
+        }
+        
+        guard let regex = try? NSRegularExpression(pattern: "[0-9a-f]{2}", options: .caseInsensitive) else { return nil }
+        
+        regex.enumerateMatches(in: hexString, range: NSMakeRange(0, hexString.utf16.count))
+        { match, flags, stop in
+            let byteString = (hexString as NSString).substring(with: match!.range)
+            var num = UInt8(byteString, radix: 16)!
+            data.append(&num, count: 1)
+        }
+        
+        return data
     }
     
     /*

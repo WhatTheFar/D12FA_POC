@@ -142,6 +142,41 @@ class SettingViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         }
     }
     
+    func animateTextField(textField: UITextField, up: Bool)
+    {
+        let movementDistance:CGFloat = -130
+        let movementDuration: Double = 0.3
+        
+        var movement:CGFloat = 0
+        if up
+        {
+            movement = movementDistance
+        }
+        else
+        {
+            movement = -movementDistance
+        }
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
+        UIView.commitAnimations()
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField)
+    {
+        guard textField == tab1Title || textField == tab2Title else { return }
+        
+        self.animateTextField(textField: textField, up:true)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField)
+    {
+        guard textField == tab1Title || textField == tab2Title else { return }
+        
+        self.animateTextField(textField: textField, up:false)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
