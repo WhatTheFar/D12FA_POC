@@ -13,11 +13,11 @@ import java.util.*
 public class Main {
     companion object {
         @JvmStatic fun main(args: Array<String>) {
-            //while (true) {
-            //    System.out.println(Date())
-            //    OTP.genOTP()
-            //    Thread.sleep(60000)
-            //}
+//            while (true) {
+//                System.out.println(Date())
+//                OTP.genOTP()
+//                Thread.sleep(60000)
+//            }
 
             val server = embeddedServer(Netty, port = 8080) {
                 routing {

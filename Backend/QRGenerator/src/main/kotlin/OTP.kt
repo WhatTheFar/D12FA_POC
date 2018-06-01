@@ -23,27 +23,28 @@ class OTP {
             if (activateResponse.getReturnCode() != DigipassSDKReturnCodes.SUCCESS)
             {
                 System.out.println("Offline activation with fingerprint FAILED - [ " + activateResponse.getReturnCode()
-                        + ": " + DigipassSDK.getMessageForReturnCode(activateResponse.getReturnCode()) + " ]\n");
+                        + ": " + DigipassSDK.getMessageForReturnCode(activateResponse.getReturnCode()) + " ]");
             }
             else
             {
                 dynamicVector = activateResponse.getDynamicVector()
                 staticVector = activateResponse.getStaticVector()
                 //getProperties(staticVector, dynamicVector)
-                System.out.println("Offline activation with fingerprint SUCCEEDED \n");
+                System.out.println("Offline activation with fingerprint SUCCEEDED");
             }
 
-            val generateResponse = DigipassSDK.generateResponseOnly (staticVector, dynamicVector, serverPassword, 0, DigipassSDKConstants.CRYPTO_APPLICATION_INDEX_APP_2, null)
+            val generateResponse = DigipassSDK.generateResponseOnly (staticVector, dynamicVector, serverPassword, 0, DigipassSDKConstants.CRYPTO_APPLICATION_INDEX_APP_1, null)
 
             if (generateResponse.getReturnCode() != DigipassSDKReturnCodes.SUCCESS) {
-                System.out.println("The password generation has FAILED - [ " + generateResponse.getReturnCode() + ": "
+                System.out.println("OTP generation has FAILED - [ " + generateResponse.getReturnCode() + ": "
                         + DigipassSDK.getMessageForReturnCode(generateResponse.getReturnCode()) + " ]")
             } else {
                 val otp = generateResponse.getResponse()
 
-                System.out.println("The password generation has SUCCEEDED")
                 System.out.println("OTP generated: " + otp)
             }
+
+            System.out.println()
         }
 
         fun getProperties(staticVector: ByteArray?, dynamicVector: ByteArray?){
