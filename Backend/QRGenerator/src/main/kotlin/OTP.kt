@@ -14,26 +14,38 @@ class OTP {
         //server password is used for encrypt data in server only. not important.
         private const val serverPassword = "AX2E43"
 
-        fun genOTP() {
+        fun genActivation(): ActivationResponse? {
+            val dynamicVector: ByteArray? = null
+            val activateResponse = DigipassSDK.activateOfflineWithFingerprint(staticVectorStr, serialNumber, activationCode, null, null, serverPassword, null, dynamicVector);
+
+            if (activateResponse.getReturnCode() != DigipassSDKReturnCodes.SUCCESS) {
+                System.out.println("Offline activation with fingerprint FAILED - [ " + activateResponse.getReturnCode()
+                        + ": " + DigipassSDK.getMessageForReturnCode(activateResponse.getReturnCode()) + " ]");
+                return null
+            } else {
+                System.out.println("Offline activation with fingerprint SUCCEEDED");
+                return activateResponse
+            }
+        }
+
+        fun genOTP(): String {
             var dynamicVector: ByteArray? = null
             var staticVector: ByteArray? = null
 
             val activateResponse = DigipassSDK.activateOfflineWithFingerprint(staticVectorStr, serialNumber, activationCode, null, null, serverPassword, null, dynamicVector);
 
-            if (activateResponse.getReturnCode() != DigipassSDKReturnCodes.SUCCESS)
-            {
+            if (activateResponse.getReturnCode() != DigipassSDKReturnCodes.SUCCESS) {
                 System.out.println("Offline activation with fingerprint FAILED - [ " + activateResponse.getReturnCode()
                         + ": " + DigipassSDK.getMessageForReturnCode(activateResponse.getReturnCode()) + " ]");
-            }
-            else
-            {
+            } else {
                 dynamicVector = activateResponse.getDynamicVector()
                 staticVector = activateResponse.getStaticVector()
                 //getProperties(staticVector, dynamicVector)
                 System.out.println("Offline activation with fingerprint SUCCEEDED");
+
             }
 
-            val generateResponse = DigipassSDK.generateResponseOnly (staticVector, dynamicVector, serverPassword, 0, DigipassSDKConstants.CRYPTO_APPLICATION_INDEX_APP_1, null)
+            val generateResponse = DigipassSDK.generateResponseOnly(staticVector, dynamicVector, serverPassword, 0, DigipassSDKConstants.CRYPTO_APPLICATION_INDEX_APP_1, null)
 
             if (generateResponse.getReturnCode() != DigipassSDKReturnCodes.SUCCESS) {
                 System.out.println("OTP generation has FAILED - [ " + generateResponse.getReturnCode() + ": "
@@ -42,21 +54,19 @@ class OTP {
                 val otp = generateResponse.getResponse()
 
                 System.out.println("OTP generated: " + otp)
+
             }
 
-            System.out.println()
+            return generateResponse.response
         }
 
-        fun getProperties(staticVector: ByteArray?, dynamicVector: ByteArray?){
+        fun getProperties(staticVector: ByteArray?, dynamicVector: ByteArray?) {
             val propertyResponse = DigipassSDK.getDigipassProperties(staticVector, dynamicVector);
 
-            if (propertyResponse.getReturnCode() != DigipassSDKReturnCodes.SUCCESS)
-            {
+            if (propertyResponse.getReturnCode() != DigipassSDKReturnCodes.SUCCESS) {
                 System.out.println("Get digipass property FAILED - [ " + propertyResponse.getReturnCode() + ": "
                         + DigipassSDK.getMessageForReturnCode(propertyResponse.getReturnCode()) + " ]\n");
-            }
-            else
-            {
+            } else {
                 System.out.println("Get digipass properties SUCCEEDED \n");
 
                 // Display DIGIPASS properties
@@ -94,8 +104,7 @@ class OTP {
                 System.out.println("Password derivation activated: " + propertyResponse.isPasswordDerivationActivated());
 
                 // Display applications properties
-                for (i in 0 until propertyResponse.applications.size)
-                {
+                for (i in 0 until propertyResponse.applications.size) {
                     val app = propertyResponse.getApplications()[i];
 
                     System.out.println("\n============================================\n");

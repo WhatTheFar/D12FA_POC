@@ -129,41 +129,13 @@ span.psw {
 
 <div action="/action_page.php" style="max-width: 5in;margin: auto;">
     <div class="imgcontainer">
-        <!--<img src="/images/logo_color.png" style="width: 80%;height: 100%;">-->
-        <img src="/images/logo_color.jpg" style="width: 40%;height: 40%;">
+        <<img src="/images/logo_color.jpg" style="width: 40%;height: 40%;">
+        <div style="padding:20px">Authenticated</div>
     </div>
 
     <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" id="usrname" value="Codium">
-
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" value="123456">
-
-        <label>
-            <input type="checkbox" checked="checked" name="remember"> Remember me
-        </label>
-
-        <br/>
-        <button onclick="onLoginClicked()" style="width:100%;">Next</button>
+        <button onclick="onLogoutClicked()" style="width:100%;background-color:gray;">Logout</button>
     </div>
-</div>
-
-
-
-<div id="id01" class="modal">
-    <form class="modal-content animate" action="/main">
-
-        <div class="imgcontainer">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-            <div style="padding:20px">please use app to scan QR code</div>
-            <img id="qrcodeImg">
-        </div>
-
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="submit">Login</button>
-        </div>
-    </form>
 </div>
 
 <script>
@@ -177,11 +149,8 @@ window.onclick = function(event) {
     }
 }
 
-function onLoginClicked() {
-    var user = document.getElementById('usrname').value
-
-    document.getElementById('qrcodeImg').src = "/qrcode?user=" + user
-    document.getElementById('id01').style.display='block'
+function onLogoutClicked() {
+    window.location = "/login"
 }
 </script>
 

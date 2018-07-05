@@ -7,7 +7,6 @@ import io.ktor.server.netty.*
 import io.ktor.content.*
 import java.io.ByteArrayOutputStream
 import java.math.BigInteger
-import java.util.*
 
 
 public class Main {
@@ -16,8 +15,21 @@ public class Main {
 //            while (true) {
 //                System.out.println(Date())
 //                OTP.genOTP()
-//                Thread.sleep(60000)
+//                Thread.sleep(10_000)
 //            }
+
+            val activationResponse = OTP.genActivation()
+
+            activationResponse ?: return
+
+            val staticVector: ByteArray = activationResponse.staticVector
+            val dynamicVector: ByteArray = activationResponse.dynamicVector
+
+            val staticHexStr: String = String.format("%040x", BigInteger(1, staticVector))
+            val dynamicHexStr: String = String.format("%040x", BigInteger(1, dynamicVector))
+            println(staticHexStr.length)
+            println(dynamicHexStr.length)
+
 
             val server = embeddedServer(Netty, port = 8080) {
                 routing {
@@ -47,6 +59,38 @@ public class Main {
                         } else {
                             call.respondBytes(qrCode, ContentType.Image.PNG)
                         }
+                    }
+
+                    get("/activate") {
+                        val content = readFileFromResource("activate.html")
+                        call.respondText(content, ContentType.Text.Html)
+                    }
+
+                    get("/activatecode") {
+
+                        val qrCode = QRCode.genQRCode("${staticHexStr}FFFFFFFFFF$dynamicHexStr")
+
+                        if (qrCode == null) {
+                            call.respondText("error, please try again.", ContentType.Text.Plain)
+                        } else {
+                            call.respondBytes(qrCode, ContentType.Image.PNG)
+                        }
+                    }
+
+                    get("/login") {
+                        val otp = call.request.queryParameters["otp"]
+                        if (otp != null) {
+                            if (otp == OTP.genOTP()) {
+                                val content = readFileFromResource("success.html")
+                                call.respondText(content, ContentType.Text.Html)
+                            } else {
+                                val content = readFileFromResource("fail.html")
+                                call.respondText(content, ContentType.Text.Html)
+                            }
+                            return@get
+                        }
+                        val content = readFileFromResource("login.html")
+                        call.respondText(content, ContentType.Text.Html)
                     }
                 }
             }
