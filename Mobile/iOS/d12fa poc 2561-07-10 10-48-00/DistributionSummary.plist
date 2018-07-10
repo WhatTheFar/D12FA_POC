@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>d12fa poc.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>485F3D5CD14A910493CA1721B99FCF82C3AA2520</string>
+				<key>dateExpires</key>
+				<string>9/1/2563 BE</string>
+				<key>type</key>
+				<string>iOS Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>J2QRH4TJBY.co.codium.d12fa-poc</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>J2QRH4TJBY</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>J2QRH4TJBY.co.codium.d12fa-poc</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>d12fa poc.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>3277cadc-f8af-4894-ba65-9e1feccf91b3</string>
+				<key>name</key>
+				<string>match InHouse co.codium.d12fa-poc</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>J2QRH4TJBY</string>
+				<key>name</key>
+				<string>CODIUM Company Limited</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
