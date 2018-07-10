@@ -63,3 +63,8 @@ build/
 .idea/compiler.xml
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/.name
+
+# Fastlane
+**/fastlane/report.xml
+**/fastlane/README.md
+fastlane_deploy
