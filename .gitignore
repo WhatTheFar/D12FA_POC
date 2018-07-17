@@ -68,3 +68,4 @@ build/
 **/fastlane/report.xml
 **/fastlane/README.md
 fastlane_deploy
+**/fastlane/

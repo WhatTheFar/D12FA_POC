@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">D12FA_POC</string>
+    <string name="camera_permission_rationale">ระบบต้องการเข้าถึงการทำงานของกล้อง</string>
+</resources>
